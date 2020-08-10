@@ -29,12 +29,14 @@ class Api:
         :return: pd.DataFrame
         """
         before_hour = 1
+        before_min = 0
         now = datetime.now()
         y, m, d, h, mi = now.year, now.month, now.day, now.hour, now.minute
         params = RequestParams(periods=period,
                                before=self._unix_time(y, m, d, h, mi),
-                               after=self._unix_time(y, m, d, h - before_hour,
-                                                     mi))
+                               after=self._unix_time(y, m, d,
+                                                     h - before_hour,
+                                                     mi - before_min))
         response = requests.get(self._REQUEST_URL, params=params)
         response = response.json()["result"][str(period)]
 
@@ -54,9 +56,9 @@ class Api:
 
         if plt_show:
             # Thanks https://qiita.com/p_q/items/883fd45c4bd3eb50fcb3
-            date_axis = [datetime(y, m, d, h - before_hour, mi)
+            date_axis = [datetime(y, m, d, h - before_hour, mi - before_min)
                          + dt.timedelta(minutes=minutes)
-                         for minutes in range(before_hour * 60)]
+                         for minutes in range(before_hour * 60 + before_min)]
             ohlc = zip(mdates.date2num(date_axis),
                        open_val, high_val, low_val, close_val)
 
