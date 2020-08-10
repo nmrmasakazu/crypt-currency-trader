@@ -1,0 +1,9 @@
+jupyter
+flake8
+flake8-docstrings
+autopep8
+requests
+pandas
+numpy
+matplotlib
+mplfinance

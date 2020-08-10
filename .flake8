@@ -1,0 +1,6 @@
+[flake8]
+exclude = tests/*
+ignore = D300, D400, W503
+; D300=Docstringはダブルクオーテーション
+; D400=Docstringの最後にピリオド
+; W503 改行前にオペレータ, W504とコンフリクト

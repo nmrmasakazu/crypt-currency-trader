@@ -1,0 +1,14 @@
+{
+    // Lint機能の有効化
+    "python.linting.enabled": true,
+    // pylintを無効化
+    "python.linting.pylintEnabled": false,
+    // flake8を有効化
+    "python.linting.flake8Enabled": true,
+    // ファイル保存時にLintを実行
+    "python.linting.lintOnSave": true,
+    // Pythonコードの整形にautopep8を利用
+    "python.formatting.provider": "autopep8",
+    // ファイル保存時に自動整形
+    "editor.formatOnSave": true,
+}
