@@ -20,18 +20,20 @@ class Api:
         """Init"""
         pass
 
-    def get_price(self, period: int, plt_show: bool):
+    def get_price(self, desig_time, period: int, plt_show: bool):
         """
-        現在時間から1時間前までのデータを取得
+        指定時間から1時間前までのデータを取得
 
+        :param period: datetime型の指定時間
         :param period: 何秒足か
         :param plt: グラフを表示するかどうか
         :return: pd.DataFrame
         """
         before_hour = 1
         before_min = 0
-        now = datetime.now()
-        y, m, d, h, mi = now.year, now.month, now.day, now.hour, now.minute
+        y, m, d, h, mi = desig_time.year, desig_time.month, desig_time.day,\
+            desig_time.hour, desig_time.minute
+
         params = RequestParams(periods=period,
                                before=self._unix_time(y, m, d, h, mi),
                                after=self._unix_time(y, m, d,
