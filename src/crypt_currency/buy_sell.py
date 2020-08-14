@@ -20,7 +20,7 @@ class BuySell:
         sell_indicator = 0
 
         # 移動平均
-        moving_average = val_df["close"].rolling(window=10).mean()
+        moving_average = val_df["close"].rolling(window=5).mean()
         # 極大値
         local_maxs = Utils.get_local_max(np.array(moving_average))
         for local_max in local_maxs:
@@ -35,10 +35,10 @@ class BuySell:
 
         # 結果
         if buy_indicator == sell_indicator:
-            return 'DRAW'
+            return "DRAW"
         elif buy_indicator > sell_indicator:
             # 買い - 自分の現金は減少
-            return 'Y2C'
+            return "Y2C"
         else:
             # 売り - 自分の現金は増加
-            return 'C2Y'
+            return "C2Y"

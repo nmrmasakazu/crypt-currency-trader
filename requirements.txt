@@ -4,6 +4,7 @@ flake8-docstrings
 autopep8
 requests
 pandas
+openpyxl
 numpy
 matplotlib
 mplfinance
